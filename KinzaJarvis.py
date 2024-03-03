@@ -6,7 +6,7 @@ import openai
 import time
 import playsound
 
-api_key = "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"
+api_key = "sk-gby29nzkUAaWMBQ4kFJVA3jv3N5t7qCGR5TZK9a" # I changed some character for my API key, it will not work for you, please use your own chat GPT and obtain an API key. 
 lang = 'en'
 openai.api_key = api_key
 
@@ -17,7 +17,7 @@ def speak(text):
 
 def get_audio():
     r = sr.Recognizer()
-    with sr.Microphone() as source:
+    with sr.Microphone() as source: #if you dont have a microphone, you can change how the audio is obtained. :) 
         print("I am listening...")
         audio = r.listen(source)
     return r.recognize_google(audio)
@@ -27,7 +27,7 @@ exit_phrases = ["Exit", "Please Stop", "Stop", "End Now"]
 try:
     speak("Go ahead and say something... ")
     audio_text = get_audio()
-    print("You said:", audio_text)
+    print("You said: ", audio_text)
 
     for phrase in exit_phrases:
         if phrase.lower() in audio_text.lower():
